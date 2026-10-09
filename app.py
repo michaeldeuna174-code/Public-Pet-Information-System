@@ -5,7 +5,7 @@ import requests
 st.set_page_config(page_title="Pet Information System", page_icon="🐾", layout="wide")
 
 st.title("🐾 Public Pet Information System")
-st.caption("Gumagamit ng Free Live Public API para sa Pet Data & Pictures")
+st.caption("Discover fun facts and browse adorable dog breeds in real-time.")
 st.markdown("---")
 
 # 1. API CALL: Kumuha ng Random Dog Trivia mula sa DogAPI.dog
