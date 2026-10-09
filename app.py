@@ -1,14 +1,14 @@
 import streamlit as st
 import requests
 
-# Page Configuration
+
 st.set_page_config(page_title="Pet Information System", page_icon="🐾", layout="wide")
 
 st.title("🐾 Public Pet Information System")
 st.caption("Discover fun facts and browse adorable dog breeds in real-time.")
 st.markdown("---")
 
-# 1. API CALL: Kumuha ng Random Dog Trivia mula sa DogAPI.dog
+
 def get_random_dog_fact():
     try:
         url = "https://dogapi.dog/api/v2/facts"
@@ -20,7 +20,7 @@ def get_random_dog_fact():
     except Exception:
         return "Naka-offline ang API o walang internet connection."
 
-# 2. API CALL: Kumuha ng Listahan ng Dog Breeds mula sa Dog CEO API
+
 @st.cache_data
 def get_all_breeds():
     try:
@@ -33,7 +33,7 @@ def get_all_breeds():
     except Exception:
         return []
 
-# 3. API CALL: Kumuha ng Random Image batay sa napiling Breed
+
 def get_breed_image(breed_name):
     try:
         url = f"https://dog.ceo/api/breed/{breed_name}/images/random"
@@ -45,9 +45,9 @@ def get_breed_image(breed_name):
         return None
 
 
-# --- STREAMLIT USER INTERFACE (UI) ---
 
-# SECTION 1: Trivia Generator (Live API)
+
+
 st.subheader("💡 Did You Know? (Live Pet Trivia)")
 fact_text = get_random_dog_fact()
 st.info(fact_text)
@@ -57,7 +57,7 @@ if st.button("🔄 Get Another Fact"):
 
 st.markdown("---")
 
-# SECTION 2: Breed & Picture Search (Live API)
+
 st.subheader("🐕 Dog Breed Finder")
 
 breeds_list = get_all_breeds()
