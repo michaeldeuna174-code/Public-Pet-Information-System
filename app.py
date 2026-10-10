@@ -1,15 +1,14 @@
-
 import streamlit as st
 import requests
 
-# Page Configuration
+
 st.set_page_config(page_title="Pet Information System", page_icon="🐾", layout="wide")
 
 st.title("🐾 Public Pet Information System")
 st.caption("Discover fun facts and browse adorable dog breeds in real-time.")
 st.markdown("---")
 
-# 1. API CALL: Retrieve Random Dog Trivia from DogAPI.dog
+
 def get_random_dog_fact():
     try:
         url = "https://dogapi.dog/api/v2/facts"
@@ -21,7 +20,7 @@ def get_random_dog_fact():
     except Exception:
         return "The API is offline or there is no internet connection."
 
-# 2. API CALL: Retrieve the List of Dog Breeds from the Dog CEO API
+
 @st.cache_data
 def get_all_breeds():
     try:
@@ -34,7 +33,7 @@ def get_all_breeds():
     except Exception:
         return []
 
-# 3. API CALL: Retrieve a Random Image Based on the Selected Breed
+
 def get_breed_image(breed_name):
     try:
         url = f"https://dog.ceo/api/breed/{breed_name}/images/random"
@@ -46,9 +45,9 @@ def get_breed_image(breed_name):
         return None
 
 
-# --- STREAMLIT USER INTERFACE (UI) ---
 
-# SECTION 1: Trivia Generator (Live API)
+
+
 st.subheader("💡 Did You Know? (Live Pet Trivia)")
 fact_text = get_random_dog_fact()
 st.info(fact_text)
@@ -58,7 +57,7 @@ if st.button("🔄 Get Another Fact"):
 
 st.markdown("---")
 
-# SECTION 2: Breed and Picture Search (Live API)
+
 st.subheader("🐕 Dog Breed Finder")
 
 breeds_list = get_all_breeds()
@@ -95,4 +94,3 @@ else:
         "Unable to connect to the Public Pet API. "
         "Please make sure you have an active internet connection."
     )
-```
